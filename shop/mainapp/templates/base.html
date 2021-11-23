@@ -25,7 +25,18 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li><a class="dropdown-item" href="#!">All Products</a>
+                                    <div class="container">
+                                        <div class="row"> 
+                                          <div class="col-lg-3 mt-5">
+                                            <div class="list-group">
+                                              {% for category in categories %}
+                                              <a href="{{ category.url }}" class="list-group-item">{{ category.name }} ({{ category.count }})</a>
+                                              {% endfor %}
+                                            </div>    
+                                          </div>  
+                                
+                                        </li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
@@ -42,6 +53,15 @@
                 </div>
             </div>
         </nav>
+        <div class="container">
+            <div class="row"> 
+              <div class="col-lg-3 mt-5">
+                <div class="list-group">
+                  {% for category in categories %}
+                  <a href="{{ category.url }}" class="list-group-item">{{ category.name }} ({{ category.count }})</a>
+                  {% endfor %}
+                </div>    
+              </div>        
         <!-- Header-->
         {% block content %}
         <header class="bg-dark py-5">
