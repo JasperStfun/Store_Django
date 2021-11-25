@@ -29,7 +29,7 @@ class MaxResolutionErrorEx(Exception):
 class LatestProductsManager:
 
     @staticmethod
-    def get_products_for_main_page( *args, **kwargs):
+    def get_products_for_main_page(*args, **kwargs):
         with_respect_to = kwargs.get('with_respect_to')
         products = []
         ct_models = ContentType.objects.filter(model__in=args)
@@ -41,11 +41,10 @@ class LatestProductsManager:
             if ct_model.exists():
                 if with_respect_to in args:
                     return sorted(
-                        products, 
-                        key=lambda x: x.__class__._meta.model_name.startswith(with_respect_to), 
-                        reverse=True
+                        products, key=lambda x: x.__class__._meta.model_name.startswith(with_respect_to), reverse=True
                     )
         return products
+
 
 
 class LatestProducts:
@@ -120,7 +119,8 @@ class Notebook(Product):
         return "{} : {}".format(self.category.name, self.title)
     
     def get_absolute_url(self):
-        return get_product_url('product_detail')
+        return get_product_url(self, 'product_detail')
+
 
 
 
@@ -142,7 +142,8 @@ class Smartphone(Product):
         return "{} : {}".format(self.category.name, self.title)
 
     def get_absolute_url(self):
-        return get_product_url('product_detail')
+        return get_product_url(self, 'product_detail')
+
     
     # @property
     # def sd(self):
