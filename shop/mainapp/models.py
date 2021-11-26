@@ -159,7 +159,7 @@ class CartProduct(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-    qtr = models.PositiveIntegerField(default=1)
+    qty = models.PositiveIntegerField(default=1)
     final_price = models.DecimalField(max_digits=9, decimal_places=2 ,verbose_name='Сумма товаров')
 
     def __str__(self):
@@ -186,5 +186,5 @@ class Customer(models.Model):
     adress = models.CharField(max_length=192, verbose_name='Адресс')
 
     def __str__(self):
-        return f'Пользователь {self.user.first_name}{self.user.last_name}'
+        return "Покупатель: {} {}".format(self.user.first_name, self.user.last_name)
 
