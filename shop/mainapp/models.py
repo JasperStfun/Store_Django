@@ -103,6 +103,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_model_name(self):
+        return self.__class__.__name__.lower()
 
 
 
@@ -120,8 +123,6 @@ class Notebook(Product):
     
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
-
-
 
 
 class Smartphone(Product):
@@ -143,13 +144,6 @@ class Smartphone(Product):
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
-
-    
-    # @property
-    # def sd(self):
-    #     if self.sd:
-    #         return 'Yes'
-    #     return 'No'
 
 
 class CartProduct(models.Model):
