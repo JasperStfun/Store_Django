@@ -65,6 +65,14 @@
               </div>        
         <!-- Header-->
         {% block content %}
+          {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>{{ message }}</strong>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endfor %}
+          {% endif %}
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
@@ -93,7 +101,6 @@
                       </div>
                     </div>
                     {% endfor %}
-          
                     </div>
                 </div>
             </div>
